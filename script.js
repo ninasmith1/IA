@@ -1,5 +1,7 @@
 $(document).ready(function(){
     var classs = "";
+    var column = 0;
+    var row = 0;
     for(var i = 0; i < 9; i++){
         $("#table").append("<tr id='y" + i + "'></tr>");
 
@@ -20,9 +22,19 @@ $(document).ready(function(){
                     $("#y" + i).append("<td id='x" + i + a + "'></td>");
                 }
             }
+            $("#x" + i + a).click(function(){
+                $("#" + this.id).attr("bgcolor", "#dddddd");
+
+                row = (this.id[1]);
+                column = (this.id[2]);
+                for(var n = 1; n < 10; n++){
+                    $("#buttonCont").append("<button onclick='guessNumber(" + n
+                        + ", " + row + ", " + column + ")'>" + n + "</button>");
+                }
+                $("#buttonCont").append("<button id='cancelButton' onclick='cancel(" + row + ", " + column + ")'>cancel</button>");
+            });
         }
     }
-
 });
 
 function getBoard(){
@@ -31,11 +43,11 @@ function getBoard(){
     $.ajax({
         url: "https://sudoku-api-nina.herokuapp.com/?size=9&level=" + level,
         dataType: 'JSON',
-        success: doIt
+        success: display
     })
 }
 
-function doIt(data) {
+function display(data) {
     var column = 0;
     var row = 0;
     var value = 0;
@@ -47,6 +59,33 @@ function doIt(data) {
         $("#x" + row + column).html(value);
     }
 
+}
+
+function guessNumber(number, column, row){
+    $("#x" + column + row).html(number);
+    $("#buttonCont").empty();
+    $("#x" + column + row).attr("bgcolor", "white");
+    $("#x" + column + row).css("color", "grey");
+}
+
+function cancel(row, column){
+    $("#buttonCont").empty();
+    $("#x" + row + column).attr("bgcolor", "white");
+}
+
+function check(){
+    var bigArray = [];
+    var val = 0;
+    for(var x = 0; x < 9; x++){
+        bigArray[x] = [];
+        for(var y = 0; y < 9; y++){
+            val = parseInt($("#x" + x + y).html());
+            console.log(val);
+            bigArray[x][y] = val;
+        }
+
+    }
+    console.log(bigArray);
 }
 
 
