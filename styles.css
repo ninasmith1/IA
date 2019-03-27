@@ -1,9 +1,11 @@
 table{
     border: 4px solid black;
+    width: 40%;
 }
 tr, td{
     border: black solid 1px;
-    padding: 2px 8px;
+    padding: 9px 8px;
+    font-size: 21px;
 }
 
 .black1{
@@ -16,4 +18,8 @@ tr, td{
 
 .black3{
     border-width: 1px 3px 3px 1px;
+}
+
+#container{
+    text-align: center;
 }

@@ -2,27 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sudoku Madness</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="container">
+<h2>Sudoku Madness</h2>
+
+<div id="text">Difficulty:</div>
 
 <select id="level">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
+    <option value="1">Easy</option>
+    <option value="2">Medium</option>
+    <option value="3">Hard</option>
 </select>
 
-<button id="startButton" onclick="getBoard()">Start</button>
+<button id="startButton" onclick="newGame()">Start Game</button>
 
-<table id="table">
+<table id="table" align="center">
 </table>
 
 <div id="buttonCont"></div>
 
-<button id="checkButton" onclick="check()">check my answer</button>
+<button id="checkButton" onclick="check()">Check My Answer</button>
+
+<div id="result"></div>
+
+</div>
 
 </body>
 </html>
