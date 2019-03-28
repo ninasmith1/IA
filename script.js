@@ -92,7 +92,6 @@ function check(){
             val = parseInt($("#x" + x + y).html());
             bigArray[x][y] = val;
         }
-
     }
     console.log(bigArray);
 
