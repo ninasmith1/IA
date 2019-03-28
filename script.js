@@ -111,16 +111,6 @@ function newGame(){
     getBoard();
 }
 
-
-
-
-
-
-
-
-
-
-
 var Sudoku = ( function (){
 
     var _rows, _cols, _grid;
